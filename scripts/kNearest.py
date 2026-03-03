@@ -6,8 +6,8 @@ def euclidean_distance(point1, point2):
 def knn(data, query, k):
     distances = []
     for index, row in data.iterrows():
-        distance = euclidean_distance(row[1:-1].values, query)
-        distances.append((distance, row['label']))
+        distance = euclidean_distance(row[:-1].values, query)
+        distances.append((distance, row['income']))
     distances.sort(key=lambda x: x[0])
     neighbors = distances[:k]
     return neighbors
